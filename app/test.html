@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>done</title>
+</head>
+<body>
+    <script src="app.js"></script>
+    <script>
+        console.log(window.location.href)
+        let url= window.location.href;
+        let code = ""
+        function getParameters(url) {
+            let pString = url.split('?')[1];
+            let qString = new URLSearchParams(pString);
+            for(let pair of qString.entries()) {
+                if(pair[0] == 'code'){
+                    code = pair[1]
+                }
+            }
+        }
+        getParameters(url)
+        console.log(code)
+    </script>
+</body>
+</html>

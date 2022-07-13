@@ -1,24 +1,12 @@
 document.getElementById('login').addEventListener('click', loginWithFacebook, false)
 
 function loginWithFacebook() {
-    FB.login( response => {
-        const { authResponse:{accessToken, userID}} = response
-
-        fetch('/login-with-facebook', {
-            method: 'POST',
-            headers:{
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({accessToken, userID})
-        
-        }).then(res =>{
-            console.log(res)
-        })
-
-        FB.api('/me', function(response){
-            console.log(JSON.stringify(response));
-        });
-
-    }, { scope: 'public_profile, email'})
-    return false 
+    let status = 0;
+    let url = "";
+    if(status == 0){
+        window.location.replace(`https://www.facebook.com/v14.0/dialog/oauth?client_id=510618090830554&redirect_uri=http://localhost:3000/test.html&state=5896245`);
+        url = window.location.href;
+        console.log(url)
+    }
+    
 }
